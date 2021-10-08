@@ -1,4 +1,5 @@
 """Classes for melon orders."""
+import random
 
 class AbstractMelonOrder():
     """An abstract base class that other Melon Orders inherit from."""
@@ -7,11 +8,14 @@ class AbstractMelonOrder():
         self.qty = qty
         self.shipped = False
        
+    def get_base_price(self):
+        base_price = random.randint(5,9)
+        return base_price
 
     def get_total(self):
         """Calculate price, including tax."""
 
-        base_price = 5
+        base_price = self.get_base_price(self)
         total = 0
 
         if self.qty < 10 and self.order_type== "international":
